@@ -1,2 +1,5 @@
 # txt-cube
-Importable random state LSE scrambles and stuff
+Importable turnable cube with random state LSE scrambles and stuff. Currently without scrambles.
+
+### Why?
+For robots :)
