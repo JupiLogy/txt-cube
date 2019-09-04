@@ -5,25 +5,19 @@ import sympy.combinatorics.permutations as perm
 import sympy.combinatorics.generators   as gens
 
 def lse_scr():
-	global alternating_6
-	global odd_6
-	global M2
-	global SOLVED_CUBE
 	corners			= random.choice(range(4))
 	if corners == 1 or corners == 3:
-		permn 		= random.choice(odd_6)
+		permn 		= random.choice(o_6)
 	else:
-		permn  		= random.choice(alternating_6)
+		permn  		= random.choice(a_6)
 	flip   			= random.choice(range(4))
 	orient 			= random.sample(range(6), flip*2)
 	m2 				= random.choice(range(2))
-	corner_pieces 	= np.array([[11, 6, 18], [20, 8, 27], [29, 2, 36], [38, 0, 9]])
 	LSE_pieces 		= np.array([[1, 37], [3, 10], [7, 19], [5, 28], [46, 25], [52, 43]])
 	LSE_pieces_new	= LSE_pieces
 	for i in orient:
 		LSE_pieces_new[i] = perm.Permutation(0,1)(LSE_pieces[i])
 	LSE_pieces_new 	= permn(LSE_pieces_new)
-
 
 	edge_perm_list	= perm.Permutation(53).list()
 	for i in range(12):
@@ -37,13 +31,6 @@ def lse_scr():
 	return(cube)
 
 def generate_moves():
-	global M2
-	global M 
-	global Mp
-	global U 
-	global U2
-	global Up
-
 	M2 = DEFAULT_CUBE
 	M  = DEFAULT_CUBE
 	Mp = DEFAULT_CUBE
@@ -64,11 +51,12 @@ def generate_moves():
 	U2 = U*U
 	Up = U2*U
 
+	return(M2, M, Mp, U, U2, Up)
+
 def generate_groups():
-	global alternating_6
-	global odd_6
-	alternating_6	= list(gens.alternating(6))
-	odd_6 = [x for x in list(gens.symmetric(6)) if x not in alternating_6]
+	a_6	= list(gens.alternating(6))
+	o_6 = [x for x in list(gens.symmetric(6)) if x not in a_6]
+	return(a_6, o_6)
 
 DEFAULT_CUBE = perm.Permutation(53)
 COLOUR_NAMES = ["Y","B","R","G","O","W"]
@@ -77,5 +65,5 @@ for colour in COLOUR_NAMES:
 	for cubie in range(9):
 		SOLVED_CUBE.append(colour)
 
-generate_moves()
-generate_groups()
+a_6, o_6 = generate_groups()
+M2, M, Mp, U, U2, Up = generate_moves()
