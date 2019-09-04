@@ -1,13 +1,13 @@
 # txt-cube
 Importable turnable cube with random state LSE scrambles and stuff. Currently without scrambles.
 
-### Why?
+## Why
 For robots :)
 
 ## Functions
-- Use `lse_scr()` to get a random state lse scrambled cube.
-- Use `M, M2, Mp, U, U2, Up` to solve the cube, or mix it up further!
-- Check against `SOLVED_CUBE` to see what it should look like when solved.
+-   Use `lse_scr()` to get a random state lse scrambled cube.
+-   Use `M, M2, Mp, U, U2, Up` to solve the cube, or mix it up further!
+-   Check against `SOLVED_CUBE` to see what it should look like when solved.
 
 ## Example of usage
 Solving the cube one or several moves at a time
